@@ -1,0 +1,19 @@
+name: Security
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+permissions:
+  contents: read
+  security-events: write
+jobs:
+  scan:
+    uses: terzo241-platform/platform-workflows/.github/workflows/security-scan.yml@main
+    with:
+      language: 'python'
+      enable-codeql: true
+      enable-trivy: true
+      enable-gitleaks: true
+      enable-dependency-review: true
+      enable-sbom: true

@@ -1,0 +1,13 @@
+name: DORA Metrics
+on:
+  schedule:
+    - cron: '0 6 * * 1'
+  workflow_dispatch:
+permissions:
+  contents: read
+  pull-requests: read
+jobs:
+  metrics:
+    uses: terzo241-platform/platform-workflows/.github/workflows/dora-metrics.yml@main
+    secrets:
+      github_token: ${{ secrets.GITHUB_TOKEN }}
